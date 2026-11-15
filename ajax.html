@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio de AJAX</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Ejercicio de AJAX</h1>
+    <p>Desarrollo de Aplicaciones en Red · Martin Alejandro Acosta Moreno</p>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="javascript.html">JavaScript</a>
+      <a href="ajax.html" class="activo">AJAX</a>
+    </nav>
+  </header>
+
+  <main class="ancho">
+    <div class="tarjeta fila barra-url">
+      <label for="recurso">URL:</label>
+      <input type="text" id="recurso">
+      <button type="button" id="enviar">Mostrar contenidos</button>
+    </div>
+
+    <div class="columnas">
+      <div id="principal">
+        <h2>Contenidos del archivo</h2>
+        <pre id="contenidos"></pre>
+
+        <h2>Cabeceras HTTP de la respuesta del servidor</h2>
+        <pre id="cabeceras"></pre>
+      </div>
+
+      <div id="secundario">
+        <h2>Estados de la petición</h2>
+        <pre id="estados"></pre>
+
+        <h2>Código de estado</h2>
+        <pre id="codigo"></pre>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/ajax.js"></script>
+</body>
+</html>

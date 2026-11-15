@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2933;
+  line-height: 1.5;
+}
+
+header {
+  background: #0b5394;
+  color: #fff;
+  padding: 24px 32px 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+header p {
+  margin: 4px 0 16px;
+  opacity: 0.85;
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px 6px 0 0;
+}
+
+nav a.activo {
+  background: #f4f6f8;
+  color: #0b5394;
+  font-weight: 600;
+}
+
+main {
+  max-width: 760px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+main.ancho {
+  max-width: 1100px;
+}
+
+.tarjeta {
+  background: #fff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.tarjeta h2 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  color: #0b5394;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.barra-url label {
+  margin: 0;
+  font-weight: 600;
+}
+
+input {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 10px;
+  border: 1px solid #bcccdc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button,
+.boton {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #0b5394;
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover,
+.boton:hover {
+  background: #073763;
+}
+
+.resultado {
+  margin: 12px 0 0;
+  min-height: 1.5em;
+  font-weight: 600;
+}
+
+ul.resultado {
+  padding-left: 20px;
+}
+
+.columnas {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#principal {
+  flex: 7;
+  min-width: 0;
+}
+
+#secundario {
+  flex: 3;
+  min-width: 0;
+}
+
+.columnas h2 {
+  margin: 16px 0 6px;
+  font-size: 1rem;
+}
+
+pre {
+  margin: 0;
+  padding: 10px;
+  background: #fafafa;
+  border: 2px solid #ccc;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#contenidos {
+  min-height: 300px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+#cabeceras,
+#estados {
+  min-height: 150px;
+}
+
+#codigo {
+  min-height: 40px;
+}
+
+@media (max-width: 700px) {
+  .columnas {
+    flex-direction: column;
+  }
+
+  #principal,
+  #secundario {
+    width: 100%;
+  }
+}
