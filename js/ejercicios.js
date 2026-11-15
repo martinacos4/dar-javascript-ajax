@@ -7,9 +7,9 @@ function limpiarTexto(texto) {
     if (sinTilde[letra]) {
       letra = sinTilde[letra];
     }
-    const esLetra = letra >= 'a' && letra <= 'z';
+    const esLetra = (letra >= 'a' && letra <= 'z') || letra === 'ñ';
     const esNumero = letra >= '0' && letra <= '9';
-    if (esLetra || esNumero || letra === 'ñ') {
+    if (esLetra || esNumero) {
       limpio += letra;
     }
   }
@@ -18,47 +18,20 @@ function limpiarTexto(texto) {
 
 function esPalindromo(texto) {
   const limpio = limpiarTexto(texto);
-  if (limpio === '') {
-    return false;
+  let alReves = '';
+  for (let i = limpio.length - 1; i >= 0; i--) {
+    alReves += limpio[i];
   }
-  for (let i = 0; i < limpio.length / 2; i++) {
-    if (limpio[i] !== limpio[limpio.length - 1 - i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function vocalesQueAparecen(frase) {
-  const limpio = limpiarTexto(frase);
-  const encontradas = [];
-  for (const vocal of vocales) {
-    if (limpio.includes(vocal)) {
-      encontradas.push(vocal);
-    }
-  }
-  return encontradas;
-}
-
-function contarVocales(frase) {
-  const contador = { a: 0, e: 0, i: 0, o: 0, u: 0 };
-  for (const letra of limpiarTexto(frase)) {
-    if (vocales.includes(letra)) {
-      contador[letra]++;
-    }
-  }
-  return contador;
+  return limpio !== '' && limpio === alReves;
 }
 
 document.getElementById('boton-palindromo').addEventListener('click', function () {
-  const texto = document.getElementById('texto-palindromo').value.trim();
+  const texto = document.getElementById('texto-palindromo').value;
   const resultado = document.getElementById('resultado-palindromo');
-  if (texto === '') {
-    resultado.textContent = 'Primero escribe una palabra o una frase.';
-  } else if (esPalindromo(texto)) {
-    resultado.textContent = '"' + texto + '" sí es un palíndromo.';
+  if (esPalindromo(texto)) {
+    resultado.textContent = 'Sí es un palíndromo.';
   } else {
-    resultado.textContent = '"' + texto + '" no es un palíndromo.';
+    resultado.textContent = 'No es un palíndromo.';
   }
 });
 
@@ -78,31 +51,32 @@ document.getElementById('boton-mayor').addEventListener('click', function () {
 });
 
 document.getElementById('boton-vocales').addEventListener('click', function () {
-  const frase = document.getElementById('frase-vocales').value;
+  const frase = limpiarTexto(document.getElementById('frase-vocales').value);
   const resultado = document.getElementById('resultado-vocales');
-  const encontradas = vocalesQueAparecen(frase);
-  if (frase.trim() === '') {
-    resultado.textContent = 'Primero escribe una frase.';
-  } else if (encontradas.length === 0) {
+  const encontradas = [];
+  for (const vocal of vocales) {
+    if (frase.includes(vocal)) {
+      encontradas.push(vocal);
+    }
+  }
+  if (encontradas.length === 0) {
     resultado.textContent = 'La frase no tiene vocales.';
   } else {
-    resultado.textContent = 'Las vocales que aparecen son: ' + encontradas.join(', ') + '.';
+    resultado.textContent = 'Vocales que aparecen: ' + encontradas.join(', ');
   }
 });
 
 document.getElementById('boton-contar').addEventListener('click', function () {
-  const frase = document.getElementById('frase-contar').value;
-  const resultado = document.getElementById('resultado-contar');
-  resultado.innerHTML = '';
-  if (frase.trim() === '') {
-    resultado.textContent = 'Primero escribe una frase.';
-    return;
+  const frase = limpiarTexto(document.getElementById('frase-contar').value);
+  const contador = { a: 0, e: 0, i: 0, o: 0, u: 0 };
+  for (const letra of frase) {
+    if (vocales.includes(letra)) {
+      contador[letra]++;
+    }
   }
-  const contador = contarVocales(frase);
+  const partes = [];
   for (const vocal of vocales) {
-    const item = document.createElement('li');
-    const palabra = contador[vocal] === 1 ? 'vez' : 'veces';
-    item.textContent = vocal + ': ' + contador[vocal] + ' ' + palabra;
-    resultado.appendChild(item);
+    partes.push(vocal + ': ' + contador[vocal]);
   }
+  document.getElementById('resultado-contar').textContent = partes.join(', ');
 });

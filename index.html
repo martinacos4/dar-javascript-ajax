@@ -9,26 +9,71 @@
 <body>
   <header>
     <h1>Laboratorio: Tecnologías JavaScript y AJAX</h1>
-    <p>Desarrollo de Aplicaciones en Red · Martin Alejandro Acosta Moreno</p>
-    <nav>
-      <a href="index.html" class="activo">Inicio</a>
-      <a href="javascript.html">JavaScript</a>
-      <a href="ajax.html">AJAX</a>
-    </nav>
+    <p>Martin Alejandro Acosta Moreno · Desarrollo de Aplicaciones en Red</p>
   </header>
 
   <main>
-    <section class="tarjeta">
-      <h2>Ejercicios de JavaScript</h2>
-      <p>Cuatro programas que piden un dato y muestran el resultado en la misma página: si una frase es un palíndromo, cuál de dos números es el mayor, qué vocales tiene una frase y cuántas veces aparece cada una.</p>
-      <a class="boton" href="javascript.html">Ir a los ejercicios</a>
+    <h2>JavaScript</h2>
+
+    <section class="ejercicio">
+      <h3>1. Palíndromo</h3>
+      <label for="texto-palindromo">Escribe una palabra o una frase:</label>
+      <input type="text" id="texto-palindromo">
+      <button type="button" id="boton-palindromo">Comprobar</button>
+      <p class="resultado" id="resultado-palindromo"></p>
     </section>
 
-    <section class="tarjeta">
-      <h2>Ejercicio de AJAX</h2>
-      <p>Página que descarga con una petición AJAX el contenido de una dirección y muestra los estados de la petición, las cabeceras de la respuesta y el código de estado.</p>
-      <a class="boton" href="ajax.html">Ir al ejercicio</a>
+    <section class="ejercicio">
+      <h3>2. El mayor de dos números</h3>
+      <label for="numero-1">Escribe dos números:</label>
+      <input type="number" id="numero-1" step="any">
+      <input type="number" id="numero-2" step="any" aria-label="Segundo número">
+      <button type="button" id="boton-mayor">Ver el mayor</button>
+      <p class="resultado" id="resultado-mayor"></p>
     </section>
+
+    <section class="ejercicio">
+      <h3>3. Vocales que aparecen</h3>
+      <label for="frase-vocales">Escribe una frase:</label>
+      <input type="text" id="frase-vocales">
+      <button type="button" id="boton-vocales">Buscar vocales</button>
+      <p class="resultado" id="resultado-vocales"></p>
+    </section>
+
+    <section class="ejercicio">
+      <h3>4. Cuántas veces aparece cada vocal</h3>
+      <label for="frase-contar">Escribe una frase:</label>
+      <input type="text" id="frase-contar">
+      <button type="button" id="boton-contar">Contar vocales</button>
+      <p class="resultado" id="resultado-contar"></p>
+    </section>
+
+    <h2>AJAX</h2>
+
+    <section class="ejercicio">
+      <label for="recurso">URL:</label>
+      <input type="text" id="recurso">
+      <button type="button" id="enviar">Mostrar contenidos</button>
+    </section>
+
+    <div id="principal">
+      <h3>Contenidos del archivo</h3>
+      <pre id="contenidos"></pre>
+
+      <h3>Cabeceras HTTP de la respuesta del servidor</h3>
+      <pre id="cabeceras"></pre>
+    </div>
+
+    <div id="secundario">
+      <h3>Estados de la petición</h3>
+      <pre id="estados"></pre>
+
+      <h3>Código de estado</h3>
+      <pre id="codigo"></pre>
+    </div>
   </main>
+
+  <script src="js/ejercicios.js"></script>
+  <script src="js/ajax.js"></script>
 </body>
 </html>
